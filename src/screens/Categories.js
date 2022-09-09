@@ -9,9 +9,17 @@ import CategoryGridTile from '../components/CategoryGridTile';
 // Services
 import { CATEGORIES } from '../services/data/dummy-data'
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
+    const navigateHandler = () => {
+        navigation.navigate('MealsOverview')
+    }
+
     const renderCategoryItem = (itemData) => {
-        return <CategoryGridTile title={itemData.item.title} color={itemData.item.color}/>
+        return <CategoryGridTile 
+            title={itemData.item.title}
+            color={itemData.item.color}
+            onPress={navigateHandler}
+        />
     }
 
     return (
