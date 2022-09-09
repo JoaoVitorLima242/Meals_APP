@@ -16,7 +16,7 @@ const MealItem = ({
     return (
         <View style={styles.mealItem}>
             <Pressable 
-                android_ripple={{color: '#ccc'}}
+                android_ripple={{opacity: 0.2}}
                 style={({pressed}) => [
                     pressed && styles.buttonPressed
                 ]}
@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         margin: 20,
         borderRadius: 8,
         overflow: 'hidden',
-        backgroundColor: '#fff',
         elevation: 4,
         shadowColor: 'black',
         shadowOpacity: 0.25,
@@ -72,9 +71,10 @@ const styles = StyleSheet.create({
     },
     innerContainer: {
         borderRadius: 8,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: '#fff',
     },
     buttonPressed: {
-        opacity: 0.5
+        opacity: 0.75
     },
 })
