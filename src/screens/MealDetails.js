@@ -1,12 +1,38 @@
 import { 
     View,
-    Text
+    Text,
+    Image
 } from "react-native"
 
-const MealDetailsScreen = () => {
+// Components
+import MealLittleDetails from "../components/MealLittleDetails"
+// Helpers
+import { getMealsById } from "../helpers/meals"
+
+const MealDetailsScreen = ({ route }) => {
+    const {
+        title,
+        imageUrl,
+        affordability,
+        complexity,
+        duration,
+        ingredients
+    } = getMealsById(route.params.mealId)
+
     return (
         <View>
-            <Text>Meals</Text>
+            <Image source={{uri: imageUrl}}/>
+            <Text>{title}</Text>
+            <MealLittleDetails
+                affordability={affordability}
+                complexity={complexity}
+                duration={duration}
+            />
+            <Text>Ingredients</Text>
+            {ingredients.map(ingredient => {(
+                <Text>{ingredient}</Text>
+            )})}
+            <Text>Steps</Text>
         </View>
     )
 }
