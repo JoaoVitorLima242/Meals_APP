@@ -8,7 +8,6 @@ import { MEALS } from "../services/data/dummy-data"
 const MealsOverviewScreen = ({ route }) => {
     const catId = route.params.categoryId
 
-    // Problema aqui
     const displayedMeals = MEALS.filter((item) => {
         return item.categoryIds.indexOf(catId) >= 0
     })
