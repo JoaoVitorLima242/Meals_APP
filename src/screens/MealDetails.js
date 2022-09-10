@@ -16,7 +16,8 @@ const MealDetailsScreen = ({ route }) => {
         affordability,
         complexity,
         duration,
-        ingredients
+        ingredients,
+        steps
     } = getMealsById(route.params.mealId)
 
     return (
@@ -29,10 +30,13 @@ const MealDetailsScreen = ({ route }) => {
                 duration={duration}
             />
             <Text>Ingredients</Text>
-            {ingredients.map(ingredient => {(
-                <Text>{ingredient}</Text>
-            )})}
+            {ingredients.map(ingredient => (
+                <Text key={ingredient}>{ingredient}</Text>
+            ))}
             <Text>Steps</Text>
+            {steps.map(step => (
+                <Text key={step}>{step}</Text>
+            ))}
         </View>
     )
 }
