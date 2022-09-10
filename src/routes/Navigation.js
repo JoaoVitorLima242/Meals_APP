@@ -16,11 +16,11 @@ const Navigation = () => {
             <Stack.Navigator
                 screenOptions={{
                     headerStyle: {
-                        backgroundColor: '#E32B0B'
+                        backgroundColor: '#BF0404'
                     },
                     headerTintColor: '#fff',
                     contentStyle: {
-                        backgroundColor: '#4B2D23'
+                        backgroundColor: '#262324'
                     }
                 }}
             >
