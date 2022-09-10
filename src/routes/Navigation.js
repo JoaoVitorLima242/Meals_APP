@@ -1,19 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
+// Helpers
+import { getCategoryById } from "../helpers/categories";
 // Screens
 import CategoriesScreen from '../screens/Categories';
 import MealDetailsScreen from "../screens/MealDetails";
 import MealsOverviewScreen from '../screens/MealsOverview';
-// Services
-import { CATEGORIES } from "../services/data/dummy-data";
 
 const Navigation = () => {
     const Stack = createNativeStackNavigator();
-
-    const getCategoryById = (catId) => {
-        return CATEGORIES.find(({ id }) => id === catId)
-    }
 
     return (
         <NavigationContainer>
