@@ -5,14 +5,24 @@ import {
     Image,
     StyleSheet
 } from "react-native"
+import { useNavigation } from "@react-navigation/native"
 
 const MealItem = ({
+    id,
     title,
     imageUrl,
     duration,
     affordability,
-    complexity
+    complexity,
 }) => {
+    const { navigate } = useNavigation()
+
+    const navigateHandler = (mealId) => {
+        navigate('MealDetails', {
+            mealId
+        })
+    }
+
     return (
         <View style={styles.mealItem}>
             <Pressable 
@@ -20,6 +30,7 @@ const MealItem = ({
                 style={({pressed}) => [
                     pressed && styles.buttonPressed
                 ]}
+                onPress={() => navigateHandler(id)}
             >
                 <View style={styles.innerContainer}>
                     <View>

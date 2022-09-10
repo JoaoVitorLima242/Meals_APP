@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // Screens
 import CategoriesScreen from '../screens/Categories';
+import MealDetailsScreen from "../screens/MealDetails";
 import MealsOverviewScreen from '../screens/MealsOverview';
 // Services
 import { CATEGORIES } from "../services/data/dummy-data";
@@ -39,10 +40,20 @@ const Navigation = () => {
                     component={MealsOverviewScreen}
                     options={({ route }) => {
                         const { title } = getCategoryById(route.params.categoryId);
-                        
+
                         return { title } 
                     }}
                 />
+                <Stack.Screen 
+                    name='MealDetails'
+                    component={MealDetailsScreen}
+                    // options={({ route }) => {
+                    //     const { title } = getCategoryById(route.params.categoryId);
+
+                    //     return { title } 
+                    // }}
+                />
+
             </Stack.Navigator>
         </NavigationContainer>
     )
