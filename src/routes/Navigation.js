@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Button, Text } from "react-native";
 
 // Helpers
 import { getCategoryById } from "../helpers/categories";
@@ -43,11 +44,6 @@ const Navigation = () => {
                 <Stack.Screen 
                     name='MealDetails'
                     component={MealDetailsScreen}
-                    // options={({ route }) => {
-                    //     const { title } = getCategoryById(route.params.categoryId);
-
-                    //     return { title } 
-                    // }}
                 />
 
             </Stack.Navigator>

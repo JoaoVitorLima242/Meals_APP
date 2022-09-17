@@ -3,8 +3,10 @@ import {
     Text,
     Image,
     StyleSheet,
-    ScrollView
+    ScrollView,
+    Button
 } from "react-native"
+import { useLayoutEffect } from "react"
 import List from "../components/MealDetails/List"
 import Subtitle from "../components/MealDetails/Subtitle"
 
@@ -13,7 +15,7 @@ import MealLittleDetails from "../components/MealLittleDetails"
 // Helpers
 import { getMealsById } from "../helpers/meals"
 
-const MealDetailsScreen = ({ route }) => {
+const MealDetailsScreen = ({ route, navigation }) => {
     const {
         title,
         imageUrl,
@@ -23,6 +25,18 @@ const MealDetailsScreen = ({ route }) => {
         ingredients,
         steps
     } = getMealsById(route.params.mealId)
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return <Button title="Tab me!" onPress={headerButtonPressHandler} />
+            }
+        })
+    },[navigation, headerButtonPressHandler])
+
+    const headerButtonPressHandler = () => {
+        console.log('pressed!')
+    }
 
     return (
         <ScrollView style={styles.rootContainer}>
