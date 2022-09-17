@@ -14,6 +14,7 @@ import Subtitle from "../components/MealDetails/Subtitle"
 import MealLittleDetails from "../components/MealLittleDetails"
 // Helpers
 import { getMealsById } from "../helpers/meals"
+import IconButton from "../components/IconButton"
 
 const MealDetailsScreen = ({ route, navigation }) => {
     const {
@@ -29,13 +30,17 @@ const MealDetailsScreen = ({ route, navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <Button title="Tab me!" onPress={headerButtonPressHandler} />
+                return <IconButton 
+                    onPress={headerButtonPressHandler} 
+                    icon={'star'}
+                    color='white'
+                />
             }
         })
     },[navigation, headerButtonPressHandler])
 
     const headerButtonPressHandler = () => {
-        console.log('pressed!')
+        console.log('pressed Star!')
     }
 
     return (
