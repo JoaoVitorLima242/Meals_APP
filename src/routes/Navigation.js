@@ -1,12 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Button, Text } from "react-native";
-import DrawerNavigation from "../components/DrawerNavigation";
+import DrawerNavigation from "./Drawer";
 
 // Helpers
 import { getCategoryById } from "../helpers/categories";
 // Screens
-import CategoriesScreen from '../screens/Categories';
 import MealDetailsScreen from "../screens/MealDetails";
 import MealsOverviewScreen from '../screens/MealsOverview';
 
@@ -30,7 +29,7 @@ const Navigation = () => {
                     name='Drawer' 
                     component={DrawerNavigation}
                     options={{
-                        title: 'All Categories'
+                        headerShown: false                        
                     }}
                 />
                 <Stack.Screen 
