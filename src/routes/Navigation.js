@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Button, Text } from "react-native";
+import DrawerNavigation from "../components/DrawerNavigation";
 
 // Helpers
 import { getCategoryById } from "../helpers/categories";
@@ -9,9 +10,9 @@ import CategoriesScreen from '../screens/Categories';
 import MealDetailsScreen from "../screens/MealDetails";
 import MealsOverviewScreen from '../screens/MealsOverview';
 
-const Navigation = () => {
-    const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
+const Navigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -26,8 +27,8 @@ const Navigation = () => {
                 }}
             >
                 <Stack.Screen 
-                    name='MealsCategories' 
-                    component={CategoriesScreen}
+                    name='Drawer' 
+                    component={DrawerNavigation}
                     options={{
                         title: 'All Categories'
                     }}

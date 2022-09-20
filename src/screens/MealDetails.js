@@ -3,8 +3,7 @@ import {
     Text,
     Image,
     StyleSheet,
-    ScrollView,
-    Button
+    ScrollView
 } from "react-native"
 import { useLayoutEffect } from "react"
 import List from "../components/MealDetails/List"
