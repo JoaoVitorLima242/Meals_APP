@@ -1,4 +1,5 @@
 import {createDrawerNavigator} from '@react-navigation/drawer'
+import { Ionicons } from '@expo/vector-icons'
 
 // Screens
 import CategoriesScreen from '../screens/Categories';
@@ -16,17 +17,35 @@ const DrawerNavigation = () => {
                 headerTintColor: '#fff',
                 sceneContainerStyle: {
                     backgroundColor: '#262324'
-                }
+                },
+                drawerContentStyle: {
+                    backgroundColor: '#BF0404'
+                },
+                drawerInactiveTintColor: '#fff',
+                drawerActiveTintColor: '#fff',
+                drawerActiveBackgroundColor: '#CA4141'
             }}
         >
             <Drawer.Screen 
                 name='Categories' 
                 component={CategoriesScreen}
                 options={{
-                    title: 'All Categories'
+                    title: 'All Categories',
+                    drawerIcon: ({color, size}) => (
+                        <Ionicons name='list' color={color} size={size}/>
+                    )
                 }}
             />
-            <Drawer.Screen name='Favorites' component={FavoritesScreen} />
+            <Drawer.Screen 
+                name='Favorites' 
+                component={FavoritesScreen}
+                options={{
+                    drawerIcon: ({color, size}) => (
+                        <Ionicons name='star' color={color} size={size}/>
+                    )
+                }}
+
+            />
         </Drawer.Navigator>
     )
 }
