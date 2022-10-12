@@ -1,8 +1,5 @@
-import { FlatList, StyleSheet, Text, View } from "react-native"
-
-// Components
-import MealItem from "../components/MealItem"
 // Services
+import MealsList from "../components/MealsList"
 import { MEALS } from "../services/data/dummy-data"
 
 const MealsOverviewScreen = ({ route }) => {
@@ -12,25 +9,9 @@ const MealsOverviewScreen = ({ route }) => {
         return item.categoryIds.indexOf(catId) >= 0
     })
 
-    const renderMealItem = ({ item }) => {
-        return <MealItem {...item}/>
-    }
-
     return(
-        <View styles={styles.container}>
-            <FlatList 
-                data={displayedMeals}
-                keyExtractor={item => item.id}
-                renderItem={renderMealItem}
-            />
-        </View>
+        <MealsList items={displayedMeals}/>
     )
 }
 
 export default MealsOverviewScreen
-
-const styles = StyleSheet.create({
-    container: {
-        margin: 16
-    }
-})
