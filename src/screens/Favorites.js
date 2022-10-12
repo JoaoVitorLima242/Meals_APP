@@ -1,8 +1,10 @@
 import { useContext } from "react"
-import { FlatList, StyleSheet, Text, View } from "react-native"
-import CategoryGridTile from "../components/CategoryGridTile"
+
+// Components
 import MealsList from "../components/MealsList"
+// Data
 import { MEALS } from "../services/data/dummy-data"
+// Context
 import { FavoritesContext } from "../store/context/favorities"
 
 
@@ -17,11 +19,3 @@ const FavoritesScreen = () => {
 }
 
 export default FavoritesScreen
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
