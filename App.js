@@ -1,15 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
+import { Provider } from 'react-redux';
 
 // Routes
 import Navigation from './src/routes/Navigation';
-// Provider
-import FavoritesProvider from './src/store/context/favorities';
+// Redux
+import { store } from './src/store/redux/store';
 
 export default function App() {
   return (
-    <FavoritesProvider>
+    <Provider store={store}>
       <StatusBar style="light" />
       <Navigation />
-    </FavoritesProvider>
+    </Provider>
   );
 }
