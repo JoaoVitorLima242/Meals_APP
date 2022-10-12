@@ -5,17 +5,25 @@ import {
     StyleSheet,
     ScrollView
 } from "react-native"
-import { useLayoutEffect } from "react"
-import List from "../components/MealDetails/List"
-import Subtitle from "../components/MealDetails/Subtitle"
+import { useContext, useLayoutEffect } from "react"
 
 // Components
 import MealLittleDetails from "../components/MealLittleDetails"
+import List from "../components/MealDetails/List"
+import Subtitle from "../components/MealDetails/Subtitle"
+import IconButton from "../components/IconButton"
 // Helpers
 import { getMealsById } from "../helpers/meals"
-import IconButton from "../components/IconButton"
+// Context
+import { FavoritesContext } from "../store/context/favorities"
 
 const MealDetailsScreen = ({ route, navigation }) => {
+    const {
+        mealId
+    } = route.params
+
+    const {addFavorite, favoritiesMeals, removeFavorite} = useContext(FavoritesContext)
+
     const {
         title,
         imageUrl,
@@ -24,23 +32,29 @@ const MealDetailsScreen = ({ route, navigation }) => {
         duration,
         ingredients,
         steps
-    } = getMealsById(route.params.mealId)
+    } = getMealsById(mealId)
+    
+    const isFavorite = favoritiesMeals.includes(mealId)
 
+    const changeFavoriteHandler = () => {
+        if(isFavorite) {
+            removeFavorite(mealId)
+        } else {
+            addFavorite(mealId)
+        }
+    }
+    
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
                 return <IconButton 
-                    onPress={headerButtonPressHandler} 
-                    icon={'star'}
+                    onPress={changeFavoriteHandler} 
+                    icon={isFavorite ? 'star' : 'star-outline'}
                     color='white'
                 />
             }
         })
-    },[navigation, headerButtonPressHandler])
-
-    const headerButtonPressHandler = () => {
-        console.log('pressed Star!')
-    }
+    },[navigation, changeFavoriteHandler])
 
     return (
         <ScrollView style={styles.rootContainer}>
