@@ -3,20 +3,20 @@ import { createSlice } from '@reduxjs/toolkit'
 const favoritesSlice = createSlice({
     name: 'favorites',
     initialState: {
-        favoritiesMeals: []
+        ids: []
     },
     reducers: {
         addFavorite: (state, action) => {
-            const { favoritiesMeals } = state
+            const { ids } = state
             const { id } = action.payload
 
-            favoritiesMeals.push(id)
+            ids.push(id)
         },
         removeFavorite: (state, action) => {
-            const { favoritiesMeals } = state
+            const { ids } = state
             const { id } = action.payload
 
-            favoritiesMeals.splice(favoritiesMeals.indexOf(id), 1)
+            ids.splice(ids.indexOf(id), 1)
         }
     }
 })
